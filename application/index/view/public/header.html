@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=yes">
+    <meta name="baidu-site-verification" content="SjBx7pu81p" />
+    <title>{$system.title}</title>
+    <meta name="description" content="{$system.description}" />
+    <link rel="shortcut icon" href="http://www.nanovision.com.cn/style/images/icon.png">
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/slider-pro.min.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/examples.css"/>
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/index.css" />
+    <!--[if lt IE 9]>
+            <script src="js/html5shiv.min.js"></script>
+            <script src="js/respond.min.js"></script>
+        <![endif]-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?f3799871bb504d1621bdd8da37c0e4c5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-112779351-1');
+    </script>
+    <script src="__STATIC__/js/jquery-1.12.4.min.js"></script>
+</head>
+<body>
+    <article class="img-shadow"></article>
+    <!-- nav -->
+    <div class="header clearfix">
+        <div class="header-list clearfix">
+            <h1 class="logo fl">
+                <a href="http://www.nanovision.com.cn">
+                    <img src="__STATIC__/picture/logo.png" />
+                </a>
+            </h1>
+            <div class="fr clearfix">
+                <div class="link clearfix">
+                    <div class="fr clearfix">
+                        <form class="fl" method="GET" action="http://www.nanovision.com.cn/news/search" id="search">
+                            <div class="search-body">
+                                <input class="search-box" value="" name="keywords" type="search" placeholder="请输入关键词">
+                                <img class="search-btn" onkeydown="enterIn(event);" onclick="butOnClick();" src="__STATIC__/picture/search.png" alt="" />
+                            </div>
+                        </form>
+                        <a href="https://weibo.com/p/1006066401326765/home?from=page_100606&mod=TAB&is_all=1#place">
+                            <img class="webo fl" src="__STATIC__/picture/icon0.png" alt="" />
+                        </a>
+                        <img class="wechat fl" src="__STATIC__/picture/icon1.png" alt="" />
+                        <a href="https://www.facebook.com/Nanovision-Technology-Beijing-Co-Ltd-282548668893239/">
+                            <img class="facebook fl" src="__STATIC__/picture/icon2.png" alt="" />
+                        </a>
+                        <a href="https://twitter.com/Nanovision3">
+                            <img class="twitter fl" src="__STATIC__/picture/icon3.png" alt="" />
+                        </a>
+                        <p class="fl language">
+                            <span onclick="window.location.href = 'http://www.nanovision.com.cn'" class="default">中文</span> |
+                            <span onclick="window.location.href = 'http://en.nanovision.com.cn'">EN</span>
+                        </p>
+                    </div>
+                </div>
+                <ul class="nav fl clearfix">
+     {volist name="one_column" id='vo'}
+    <li class="mainNav">
+        <span class="fir">
+            <a class="fir" href="{$vo.column_link}">
+                <b>{$vo.column_name}</b>
+            </a>
+        </span>
+        <div class="company_list">
+        <ul>
+        {volist name=":two_column($vo.id)" id='vo'}
+        {if condition="$vo neq ''"}
+            <li>
+                <a href="{$vo.column_link}">{$vo.column_name}</a>
+            </li>
+        {/if}
+        {/volist}
+        </ul>
+        </div>
+    </li>
+     {/volist}
+</ul>
+            </div>
+        </div>
+        <!-- background -->
+        <div class="mask"></div>
+    </div>

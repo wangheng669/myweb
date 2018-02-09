@@ -1,0 +1,21 @@
+﻿{include file='public/header'/}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+
+
+    <!-- company profile -->
+<div class="company-profile">
+    <div><img src="__STATIC__/picture/banner_company.jpg" alt=""></div>
+    <div class="two-nav">
+        <ul class="clearfix">
+             {volist name=":two_column(1)" id='vo'}
+            <li>
+                <a href="{$vo.column_link}">{$vo.column_name}</a>
+            </li>
+            {/volist}
+        </ul>
+        <div>
+            {$news.content}
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

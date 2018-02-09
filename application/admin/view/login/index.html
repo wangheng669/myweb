@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="none" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="admin login">
+    <title>Admin - 纳米维景</title>
+    <link rel="stylesheet" href="__STATIC__/css/app.css">
+    <script src="__STATIC__/js/jquery.min.js"></script>
+    <style>
+        body {
+            background-image:url('__STATIC__/images/bg.jpg');
+            background-color: #FFFFFF;
+        }
+        .login-sidebar{
+            border-top:5px solid #22A7F0;
+        }
+        @media (max-width: 767px) {
+            .login-sidebar {
+                border-top:0px !important;
+                border-left:5px solid #22A7F0;
+            }
+        }
+        body.login .form-group-default.focused{
+            border-color:#22A7F0;
+        }
+        .login-button, .bar:before, .bar:after{
+            background:#22A7F0;
+        }
+    </style>
+
+</head>
+<body class="login">
+<div class="container-fluid">
+    <div class="row">
+        <div class="faded-bg animated"></div>
+        <div class="hidden-xs col-sm-7 col-md-8">
+            <div class="clearfix">
+                <div class="col-sm-12 col-md-10 col-md-offset-2">
+                    <div class="logo-title-container">
+							<img class="img-responsive pull-left logo hidden-xs animated fadeIn" src="http://www.nanovision.com.cn/vendor/tcg/voyager/assets/images/logo-icon-light.png" alt="Logo Icon">
+                            <div class="copy animated fadeIn">
+                            <h1>纳米维景</h1>
+                            <p>纳米维景是一家提供探测器核心部件和新一代CT解决方案的高科技企业，主要业务包括X射线光子探测器、CMOS平板探测器、X射线成像软件、静态CT解决方案等。</p>
+                        </div>
+                    </div> <!-- .logo-title-container -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-5 col-md-4 login-sidebar">
+
+            <div class="login-container">
+
+                <p>在下方登录：</p>
+
+                <form id='form_data'>
+                    <div class="form-group form-group-default" id="emailGroup">
+                        <label>username</label>
+                        <div class="controls">
+                            <input type="text" name="username" id="text" value="" placeholder="用户名" class="form-control" required>
+                         </div>
+                    </div>
+
+                    <div class="form-group form-group-default" id="passwordGroup">
+                        <label>Password</label>
+                        <div class="controls">
+                            <input id='password' type="password" name="password" placeholder="密码" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-block login-button">
+                        <span class="signin">登录</span>
+                    </button>
+
+              </form>
+
+              <div style="clear:both"></div>
+
+              
+            </div> <!-- .login-container -->
+
+        </div> <!-- .login-sidebar -->
+    </div> <!-- .row -->
+</div> <!-- .container-fluid -->
+<script>
+    $('.login-button').on('click',function(event){
+        event.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: "{:url('login/check')}",
+            data: $('#form_data').serialize(),
+            dataType: "json",
+            success: function(data){
+               if(data.status==1){
+                    alert(data.message);
+                    window.location.href="{:url('index/index')}";
+               }else{
+                   alert(data.message);
+                   window.location.href = "{:url('login/index')}";
+               }
+            }
+        })
+    });
+</script>
+</body>
+</html>

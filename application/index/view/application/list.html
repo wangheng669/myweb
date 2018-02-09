@@ -1,0 +1,24 @@
+﻿{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+    <div class="company-news">
+    <div class="first-bg"><img src="__STATIC__/picture/{$application.application_id}.jpg" alt=""></div>
+    <div class="application-list">
+        <div class="application-text">
+            <p style="margin: 20px 0px; padding: 0px; font-size: 15px; color: #666666; line-height: 33px; letter-spacing: 0.7px; text-align: justify; text-indent: 2em;">
+                {$application.content}
+            </p>           
+                <div class="product-list-protBox clearfix">
+                    <dl>
+                        <dt><img src="__STATIC__/picture/ct.png" alt="静态CT"></dt>
+                        <dd>静态CT</dd>
+                        <div>
+                            <h4><span>产品</span></h4>
+                            <p><a href="http://www.nanovision.com.cn/production/1">具有突破性技术的第六代CT，采用光子计数探测器和扫描射线源构成双环结构。射线源环圆周布有数百个焦点，扫描时不需机械旋转，而通过时序控制圆周焦点依次放线，快速地完成CT扫描和重建，具有剂量低，扫描速度快，无机械运动伪影的优势。</a></p>
+                            <a href="http://www.nanovision.com.cn/production/1">查看详情</a>
+                        </div>
+                    </dl>
+                </div>
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

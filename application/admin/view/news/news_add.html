@@ -1,0 +1,114 @@
+{include file='public/header' /}
+    <body>
+        <div class="x-body">
+            <form class="layui-form layui-form-pane" id="form_data" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label for="L_title" class="layui-form-label">
+                        标题
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" id="L_title" name="title" required lay-verify="title" value="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_title" class="layui-form-label">
+                        来源
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" id="L_title" name="form" required lay-verify="required" value="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_title" class="layui-form-label">
+                        描述
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" id="L_title" name="description" required lay-verify="required" value="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_title" class="layui-form-label">
+                        是否展示
+                    </label>
+                    <div class="layui-input-block">
+                        <select name="reveal">
+                            <option value="0">不展示</option>
+                            <option value="1">展示</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="link" class="layui-form-label">
+                        <span class="x-red">*</span>首图
+                    </label>
+                    <div class="layui-input-inline">
+                        <div class="site-demo-upbar">
+                            <input type="file" name="file" class="layui-upload-file" id="test">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <img id="LAY_demo_upload" width="300" src="/static/admin/images/Booth.jpg">
+                    <input id="image_src" type="text" name="image" value="" hidden>
+                </div>
+                <div id="editor" type="text/plain" name="content" style="width:100%;height:300px;" required></div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">
+                            所在类别
+                        </label>
+                        <div class="layui-input-block">
+                            <select lay-verify="required" name="column_id">
+                                {foreach $column as $v}
+                                <option value="{$v.id}">{$v.column_name}</option>
+                                {/foreach}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button type="button" class="layui-btn" lay-filter="add" lay-submit>
+                        保存 
+                    </button>
+                </div>
+            </form>
+        </div>
+        {include file='public/base_js' /}
+        <script>
+            layui.use(['form','layer','upload'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer
+              //监听提交
+                //图片上传接口
+                layui.upload({
+                    url: '{:url('banner/upload')}'
+                    , ext: 'jpg|png|gif'
+                    , success: function (msg) { //上传成功后的回调
+                        if (msg.src != '') {
+                            $('#LAY_demo_upload').attr('src', "__ROOT__/uploads/" + msg.src);
+                            $('#image_src').val(msg.src);
+                        } else {
+                            layer.msg(msg.message, {
+                                icon: 2,
+                                time: 1000
+                            });
+                        }
+                    }
+                });
+              form.on('submit(add)', function(data){
+                push("",'{:url('news/save_news')}',$('#form_data').serialize());
+              });
+            });
+        </script>
+        <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+        <script type="text/javascript" src="/ueditor/ueditor.all.min.js"> </script>
+        <script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+        <script>
+            $(function () {
+                var ue = UE.getEditor('editor');
+            });
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+﻿{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+    <div class="company-news">
+    <div><img src="__STATIC__/picture/news-banner.jpg" alt=""></div>
+    <div class="news-twonav">
+        <ul class="clearfix">
+             {volist name=":two_column(9)" id='vo'}
+            <li>
+                <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+            </li>
+             {/volist}
+        </ul>
+        <div class="news-only">
+            <div class="news-banner clearfix">
+                <div class="fl news_img"><a href="news/list?id={$news.id}"><img src="/uploads/{$news.image}" alt="{$news.title}"></a></div>
+                <div class="fr news_text">
+                    <div class="news_tittle"><span>·</span><a target="_black" href="news/list?id={$news.id}">{$news.title}</a></div>
+                    <p><a href="news/list?id={$news.id}">{$news.description}</a></p>
+                    <div class="news-time news-dw"><span>{$news.form}</span><span>{$news.create_time}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="news-list clearfix">
+            {foreach $news_list as $v}
+                <section class="clearfix">
+                <div class="fl news-list-time">
+                    <h2>{$v.create_time|strtotime|date="d",###}</h2>
+                    <span>{$v.create_time|strtotime|date="Y-m",###}</span>
+                </div>
+                <div class="fl news-list-text">
+                    <h3><span>·</span><a target="_black" href="news/list?id={$v.id}">{$v.title}</a></h3>
+                    <p><a target="_black" href="news/list?id={$v.id}">{$v.description}</a></p>
+                </div>
+                </section>
+            {/foreach}
+                    </div>
+    </div>
+    <div class="news-to clearfix">
+    
+    </div>
+</div>
+{include file='public/footer' /}

@@ -1,0 +1,26 @@
+{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+    <div class="company-news">
+        <div>
+            <img src="__STATIC__/picture/news-banner.jpg" alt="">
+        </div>
+        <div class="news-twonav">
+            <ul class="clearfix">
+                {volist name=":two_column(9)" id='vo'}
+                <li>
+                    <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+                </li>
+                {/volist}
+            </ul>
+        <div class="news-only">
+            <div class="news-text">
+                    {$news.content}
+                <div class="news-time">
+                    <span>{$news.form}</span>
+                    <span>{$news.create_time}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

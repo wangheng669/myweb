@@ -1,0 +1,80 @@
+{include file='public/header' /}
+    <body>
+        <div class="x-body">
+            <form class="layui-form" id="form_data">
+                <div class="layui-form-item">
+                    <label for="id" class="layui-form-label">
+                        ID
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="id" name="id" required="" lay-verify="required"
+                        autocomplete="off"  value="{$column_edit.id}" disabled="" class="layui-input">
+                        <input type="text" name="id" value="{$column_edit.id}" hidden>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="cname" class="layui-form-label">
+                        <span class="x-red">*</span>分类名
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="column_name" name="column_name" required="" lay-verify="required"
+                        autocomplete="off" class="layui-input" value="{$column_edit.column_name}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="cname" class="layui-form-label">
+                        <span class="x-red">*</span>链接地址
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="column_link" name="column_link" required="" lay-verify="required" autocomplete="off" class="layui-input"
+                            value="{$column_edit.column_link}">
+                    </div>
+                    </div
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属分类</label>
+                    <div class="layui-input-inline" >
+                        <select name="parent_id">
+                            <option value="0">顶级分类</option>
+                             {foreach $columns as $v}
+                            <option value="{$v.id}" {if condition="$v.id eq $column_edit.parent_id"} selected="selected" {/if}>{$v.column_name}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="sort" class="layui-form-label">
+                        <span class="x-red">*</span>排序
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="number" id="sort" name="sort" required="" lay-verify="required|number" autocomplete="off" value="{$column_edit.sort}"
+                            class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="L_repass" class="layui-form-label">
+                    </label>
+                    <button type="button"  class="layui-btn" lay-filter="save" lay-submit="">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
+        {include file='public/base_js' /}
+        <script>
+            layui.use(['form','layer'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+            
+
+              //监听提交
+              form.on('submit(save)', function(){
+                push("","{:url('column/saveColumn')}",$('#form_data').serialize());
+              });
+              
+              
+            });
+        </script>
+    </body>
+
+</html>

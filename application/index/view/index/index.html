@@ -1,0 +1,203 @@
+﻿{include file='public/header' /}
+<body>
+    <article class="img-shadow"></article>
+    <!-- nav -->
+    <div class="header clearfix">
+    <div class="header-list clearfix">
+        <h1 class="logo fl"><a href="http://www.nanovision.com.cn"><img src="__STATIC__/picture/logo.png"/></a></h1>
+        <div class="fr clearfix">
+            <div class="link clearfix">
+                <div class="fr clearfix">
+                    <form class="fl" method="GET" action="http://www.nanovision.com.cn/news/search" id="search">
+                        <div class="search-body">
+                            <input class="search-box" value="" name="keywords" type="search" placeholder="请输入关键词">
+                            <img class="search-btn" onkeydown="enterIn(event);" onclick="butOnClick();"  src="__STATIC__/picture/search.png" alt="" />
+                        </div>
+                    </form>
+                    <a href="https://weibo.com/p/1006066401326765/home?from=page_100606&mod=TAB&is_all=1#place"><img class="webo fl" src="__STATIC__/picture/icon0.png" alt="" /></a>
+                    <img class="wechat fl" src="__STATIC__/picture/icon1.png" alt="" />
+                    <a href="https://www.facebook.com/Nanovision-Technology-Beijing-Co-Ltd-282548668893239/"><img class="facebook fl" src="__STATIC__/picture/icon2.png" alt="" /></a>
+                    <a href="https://twitter.com/Nanovision3"><img class="twitter fl" src="__STATIC__/picture/icon3.png" alt="" /></a>
+                    <p class="fl language">
+                        <span  onclick="window.location.href = 'http://www.nanovision.com.cn'" class="default">中文</span> | <span  onclick="window.location.href = 'http://en.nanovision.com.cn'">EN</span>
+                    </p>
+                </div>
+            </div>
+<ul class="nav fl clearfix">
+     {volist name="one_column" id='vo'}
+    <li class="mainNav">
+        <span class="fir">
+            <a class="fir" href="{$vo.column_link}">
+                <b>{$vo.column_name}</b>
+            </a>
+        </span>
+        <div class="company_list">
+        <ul>
+        {volist name=":two_column($vo.id)" id='vo'}
+        {if condition="$vo neq ''"}
+            <li>
+                <a href="{$vo.column_link}">{$vo.column_name}</a>
+            </li>
+        {/if}
+        {/volist}
+        </ul>
+        </div>
+    </li>
+     {/volist}
+</ul>
+            </div>
+        </div>
+        <!-- background -->
+        <div class="mask"></div>
+    </div>
+
+        <!-- banner -->
+    <div class="banner slideBox" id="slideBox">
+        <div  class="silder_main_block bd">
+            <ul id="silder_main">
+                {volist name="banner" id='vo'}
+                <li><a href="{$vo.link}"><img width="1800" height="778" src="/uploads/{$vo.image}" alt="{$vo.description}"/></a></li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="silder_ctrl" id="silder_ctrl">
+            <span class="silder_ctrl_prev prev" id="silder_ctrl_prev"></span>
+            <span class="silder_ctrl_next next" id="silder_ctrl_next"></span>
+        </div>
+        <div class="hd three_btn">
+            <ul><li>1</li><li>2</li><li>3</li><li>4</li></ul>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="news-box clearfix">
+        <section class="news-left">
+            <div class="top-line"></div>
+            <div class="news">
+                <div class="news-logo"><img src="__STATIC__/picture/index_news_bg.jpg" alt=""></div>
+                 {volist name=":two_column(9)" id='vo'}
+                <div class="menu-list">
+                    <dl>
+                        <dd class="dd-first">{$vo.column_name}</dd>
+                        <dd class="dd-last">{$vo.column_name}</dd>
+                    </dl>
+                </div>
+                 {/volist}
+            </div>
+        </section>
+        <div class="menu-contBox clearfix">
+            {volist name='$news' id='v'}
+            <section class="clearfix menu-cont{$i}">
+                <div class="fl news-box-top">
+                    <div>
+                        <img src="http://www.nanovision.com.cn/style/images/news.png" alt="">
+                    </div>
+                    <div>
+                        <img class="news-tp" src="/uploads/{$v.image}" alt="{$v.title}">
+                    </div>
+                </div>
+                <div class="fr news-box-foot clearfix">
+                    <a href="http://www.nanovision.com.cn/news" target="_black" class="news-box-foot-more fr">更多
+                        <span>+</span>
+                    </a>
+                    <div class="fr news-box-foot-text">
+                        <h3>
+                            <span>·</span>
+                            <a href="http://www.nanovision.com.cn/news/15" target="_black">{$v.title}</a>
+                        </h3>
+                        <div>
+                            <img src="http://www.nanovision.com.cn/style/images/news-line.png" alt="">
+                        </div>
+                        <div></div>
+                    </div>
+                    <div class="fr news-box-foot-address">
+                        <span>{$v.form}</span>
+                        <span>{$v.create_time}</span>
+                    </div>
+                </div>
+            </section>
+            {/volist}
+        </div>
+        <!-- <div class="line-xu"><img src="__STATIC__/picture/news-line2.png" alt=""></div> -->
+    </div>
+
+    <!-- product -->
+    <div class="product-show">
+        <div class="product-photo">
+            <div class="show-first clearfix">
+                <div class="show-img fl"><img src="__STATIC__/picture/product-show.png" alt=""></div>
+                <a href="http://www.nanovision.com.cn/production" class="show-more fr">查看更多<span>+</span></a>
+            </div>
+            <div class="show-cont clearfix">
+                <div id="slideshow" class="big-show fl clearfix">
+                    <a><img onclick="window.location.href='http://www.nanovision.com.cn/production'" src="__STATIC__/picture/image1_medium1.jpg" alt="" /></a>
+                    <a><img onclick="window.location.href='http://www.nanovision.com.cn/production/tance'" src="__STATIC__/picture/首页动态图-cmos平板探测器.png" alt="" /></a>
+                    <a><img onclick="window.location.href='http://www.nanovision.com.cn/production/software'" src="__STATIC__/picture/image2_medium.jpg" alt="" /></a>
+                </div>
+    <div class="small-show fr clearfix">
+                    <a href="http://www.nanovision.com.cn/production/tance"><img src="__STATIC__/picture/image2_thumbnail1.jpg" alt="" /></a>
+                    <a href="http://www.nanovision.com.cn/production/software"><img src="__STATIC__/picture/image1_thumbnail1.jpg" alt="" /></a>
+                    <a href="http://www.nanovision.com.cn/production"><img src="__STATIC__/picture/image3_thumbnail.jpg" alt="" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- contact -->
+    <div class="contact-box wrapper">
+        <a href="tel:+86-1062452865">
+            <dl>
+                <dt></dt>
+                <dd>电话</dd>
+                <dd>+86-10 62452865</dd>
+            </dl>
+        </a>
+        <a href="mailto:office@nanovision.com.cn" target="_blank">
+            <dl>
+                <dt></dt>
+                <dd>邮箱</dd>
+                <dd>office@nanovision.com.cn</dd>
+            </dl>
+        </a>
+        <a href="http://map.baidu.com/?newmap=1&ie=utf-8&s=s%26wd%3D%E5%8C%97%E4%BA%AC%E5%B8%82%E6%B5%B7%E6%B7%80%E5%8C%BA%E5%8C%97%E6%B8%85%E8%B7%AF68%E5%8F%B7%E9%99%A2%20%E7%94%A8%E5%8F%8B%E8%BD%AF%E4%BB%B6%E5%9B%AD%E8%A5%BF%E5%8C%BA%E4%B8%80%E5%8F%B7%E6%A5%BC%E4%B8%80%E5%B1%821-06" target="_blank">
+            <dl>
+                <dt></dt>
+                <dd>公司地址</dd>
+                <dd>北京市海淀区北清路68号院</dd>
+                <dd>用友软件园西区一号楼一层1-06</dd>
+            </dl>
+        </a>
+    </div>
+<script src="__STATIC__/js/jquery-1.12.4.min.js"></script>
+<script>
+    function enterIn(evt) {
+        var evt = evt ? evt : (window.event ? window.event : null);//兼容IE和FF
+        if (evt.keyCode == 13) {
+            var obj;
+            queryDistrict(obj, 2);
+        }
+    }
+    function butOnClick() {
+        document.getElementById('search').submit();
+    }
+</script>
+<script src="__STATIC__/js/jquery.superslide.2.1.1.js"></script>
+<script src="__STATIC__/js/index.js"></script>
+<script src="__STATIC__/js/jquery.sliderpro.min.js"></script>
+<script src="__STATIC__/js/photomove.js"></script>
+<script type="text/javascript">
+    //banner轮播
+    jQuery(".slideBox").slide({
+        mainCell: ".bd ul",
+        autoPlay: true,
+        effec: "fade",
+        delayTime: 0,
+        easing: "easeInQuint"
+    });
+</script>
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById('slideshow').children[0].className = "activety";
+    }
+</script>
+{include file='public/footer' /}
