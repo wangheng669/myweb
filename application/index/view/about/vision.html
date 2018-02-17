@@ -1,0 +1,21 @@
+﻿{include file='public/header'/}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+<div class="company-mission">
+    <div class="first-bg"><img src="__STATIC__/picture/banner_company.jpg" alt=""></div>
+    <div class="two-nav">
+        <ul class="clearfix">
+             {volist name=":two_column(1)" id='vo'}
+            <li>
+                <a href="{$vo.column_link}">{$vo.column_name}</a>
+            </li>
+            {/volist}
+        </ul>
+        <div class="mission-img">
+            <div><img src="__STATIC__/picture/company-vision3.jpg" alt="公司愿景"></div>
+            <div class="company-text">
+                
+            </div>
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

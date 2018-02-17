@@ -1,0 +1,59 @@
+﻿{include file='public/header'/}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+<div class="company-profile">
+    <div><img src="__STATIC__/picture/banner_company.jpg" alt=""></div>
+    <div class="two-nav culture_box">
+        <ul class="clearfix">
+             {volist name=":two_column(1)" id='vo'}
+            <li>
+                <a href="{$vo.column_link}">{$vo.column_name}</a>
+            </li>
+            {/volist}
+        </ul>
+        <div>
+            <div class="mission-img">
+            <div><img src="__STATIC__/picture/culture.png" alt="价值观"></div>
+                <div class="culture-text"><div>价值观</div></div>
+            </div>
+            <div class="recruit-idea-body">
+                <!-- <p><img src="picture/linian_textbg2_1.jpg" alt="" width="1201" height="292" /></p>
+<p><span style="color: #343434; font-family: 'microsoft yahei'; font-size: 16px; line-height: 30px; text-indent: 32px;">纳米维景科技有限公司拥有强大的研发团队，在公司成立之初便获得了天使投资的青睐，目前纳米维景在关键产品和技术方面已取得重大突破，顺利获得新一轮的风险投资，开始了医学和工业放射呈像领域的应用产品的开发。</span></p> -->
+                <div class="clearfix recruit-idea">
+                    <div class="fl recruit-idea-imgBox"><img src="__STATIC__/picture/cul-1.png" alt=""></div>
+                    <div class="fr recruit-idea-textBox">
+                        <h3>诚信·担当</h3>
+                        <p>以诚立身，以信为人，踏实做事，勇于担当。</p>
+                    </div>
+                </div>
+                <div class="clearfix recruit-idea">
+                    <div class="fl recruit-idea-textBox">
+                        <h3>专注·拼搏</h3>
+                        <p>专注辐射成像领域，立足高速高精度成像技术前沿，履峰而上勇攀技术高峰，天行健君子以自强不息。</p>
+                    </div>
+                    <div class="fr recruit-idea-imgBox"><img src="__STATIC__/picture/cul-2.png" alt=""></div>
+                </div>
+                <div class="clearfix recruit-idea">
+                    <div class="fl recruit-idea-imgBox"><img src="__STATIC__/picture/cul-3.png" alt=""></div>
+                    <div class="fr recruit-idea-textBox">
+                        <h3>高效·创新</h3>
+                        <p>时间成就奇迹，高效缔造传奇，技术创新，产品创新，应用创新，自主创新赢天下。</p>
+                    </div>
+                </div>
+                <div class="clearfix recruit-idea">
+                    <div class="fl recruit-idea-textBox">
+                        <h3>合作·共赢</h3>
+                        <p>人心齐则士气足，士气足则百事兴，与队友合作共创佳绩，与客户合作共赢市场。</p>
+                    </div>
+                    <div class="fr recruit-idea-imgBox"><img src="__STATIC__/picture/cul-4.png" alt=""></div>
+                </div>
+            </div>
+
+
+            <!-- 正在建设ing -->
+            <!-- <div class="building">
+                <img src="picture/ing_1.jpg" alt="">
+            </div> -->
+        </div>
+    </div>
+</div>
+ 

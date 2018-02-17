@@ -1,0 +1,51 @@
+﻿
+{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+ <div class="company-profile">
+    <div><img src="__STATIC__/picture/recruit_banner.jpg" alt=""></div>
+    <div class="news-twonav">
+        <ul class="clearfix">
+             {volist name=":two_column(22)" id='vo'}
+            <li>
+                <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+            </li>
+            {/volist}
+        </ul>
+        <div>
+            <div class="item-second-box"><img src="__STATIC__/picture/linian.jpg" alt=""></div>
+            <div class="recruit-ideatext"><div>校园招聘</div></div>
+        </div>
+        <div class="recruit-idea-body">
+            <img src="__STATIC__/picture/linian_textbg.jpg" alt="">
+            <div class="clearfix recruit-idea">
+                <div class="fl recruit-idea-imgBox"><img src="__STATIC__/picture/linian01.jpg" alt=""></div>
+                <div class="fr recruit-idea-textBox">
+                    <h3>引进人才</h3>
+                    <p>广纳天下贤才，欢迎不甘现状、勇于拼搏、富有创新精神的贤才加入。</p>
+                </div>
+            </div>
+            <div class="clearfix recruit-idea">
+                <div class="fl recruit-idea-textBox">
+                    <h3>善用人才</h3>
+                    <p>提供公平公正的考核机制和竞争舞台，为新时代创新型人才提供广阔的空间。</p>
+                </div>
+                <div class="fr recruit-idea-imgBox"><img src="__STATIC__/picture/linian02.jpg" alt=""></div>
+            </div>
+            <div class="clearfix recruit-idea">
+                <div class="fl recruit-idea-imgBox"><img src="__STATIC__/picture/linian03.jpg" alt=""></div>
+                <div class="fr recruit-idea-textBox">
+                    <h3>培育人才</h3>
+                    <p>不定期举行管理层培训以及员工知识培训，帮助员工进行职业规划和发展。</p>
+                </div>
+            </div>
+            <div class="clearfix recruit-idea">
+                <div class="fl recruit-idea-textBox">
+                    <h3>关爱人才</h3>
+                    <p>倡导团队互帮互助，提供舒适的工作环境，家一般温馨和谐的工作氛围。</p>
+                </div>
+                <div class="fr recruit-idea-imgBox"><img src="__STATIC__/picture/linian04.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

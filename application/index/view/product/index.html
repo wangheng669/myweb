@@ -1,0 +1,54 @@
+﻿{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+    <div class="company-profile">
+    <div class="first-bg"><img src="__STATIC__/picture/product_banner.jpg" alt=""></div>
+    <div class="news-twonav product-box">
+        <ul class="clearfix">
+             {volist name=":two_column(18)" id='vo'}
+            <li {if condition="$vo.id EQ 20" } class="tance-box" {elseif condition="$vo.id EQ 21" /} class="ruanjian-box" {/if} >
+                <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+                <section id="down_word{$i}">
+                    <div>
+                         {volist name=":two_column($vo.id)" id='vo'}
+                        <a href="{$vo.column_link}">{$vo.column_name}</a>
+                         {/volist}
+                    </div>
+                </section>
+            </li>
+            {/volist}
+        </ul>
+        <div class="product-list">
+            <div class="product_replace">
+                <div id="spe-title">{$product.name}</div>
+            </div>
+            <div class="product_text clearfix">
+                <div class="fl download">
+                    <p>{$product.content}</p>
+                    {if condition="$product.product_link NEQ '' "}
+                    <span class="download_pdf">
+                        <a id="item_down" href="{$product.product_link}" target="_blank">产品资料</a>
+                    </span>
+                    {/if}
+                </div>
+                <div class="fr"><img src="/uploads/{$product.image}" alt=""></div>
+            </div>
+        </div>
+        <div class="medical-box">
+
+            {volist name='property' id='vo'}
+            <div class="medical_text">
+                <div class="clearfix medical-tittle">
+                    <span class="fl">{$vo.title}</span>
+                    <span class="fr medical_icon">+</span>
+                </div>
+                <div>
+                    <div class="medical_text_p">{$vo.content}</div>
+                </div>
+            </div>
+            {/volist}
+
+
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

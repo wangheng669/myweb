@@ -1,0 +1,105 @@
+{include file='public/header' /}
+    <body>
+        <div class="x-body">
+            <form class="layui-form layui-form-pane" id="form_data">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" required  lay-verify="required" placeholder="请输入名称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属产品</label>
+                    <div class="layui-input-inline">
+                        <select name="category_id">
+                            {foreach $columns as $v}
+                            <option value="{$v.id}">{$v.column_name}</option>
+                            {/foreach}
+                        </select>
+                        
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属应用</label>
+                    <div class="layui-input-inline">
+                        <select name="application_id">
+                            {foreach $application as $v}
+                            <option value="{$v.id}">{$v.column_name}</option>
+                            {/foreach}
+                        </select>
+                </div>
+                </div>
+                <div class="layui-form-item">
+                    <label for="link" class="layui-form-label">
+                        <span class="x-red">*</span>产品图片
+                    </label>
+                    <div class="layui-input-inline">
+                        <div class="site-demo-upbar">
+                            <input type="file" name="file" class="layui-upload-file" id="test">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label  class="layui-form-label">缩略图
+                    </label>
+                    <img id="LAY_demo_upload" width="300" src="/static/admin/images/Booth.jpg">
+                    <input id="image_src" type="text" name="image" value="" hidden>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">文本域</label>
+                    <div class="layui-input-block">
+                        <textarea name="content" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品资料</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="product_link"  placeholder="请输入链接" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button type="button" class="layui-btn" lay-filter="add" lay-submit>
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
+        {include file='public/base_js' /}
+        <script>
+            layui.use(['form','layer','upload'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer
+              //监听提交
+                //图片上传接口
+                layui.upload({
+                    url: '{:url('banner/upload')}'
+                    , ext: 'jpg|png|gif'
+                    , success: function (msg) { //上传成功后的回调
+                        if (msg.src != '') {
+                            $('#LAY_demo_upload').attr('src', "__ROOT__/uploads/" + msg.src);
+                            $('#image_src').val(msg.src);
+                        } else {
+                            layer.msg(msg.message, {
+                                icon: 2,
+                                time: 1000
+                            });
+                        }
+                    }
+                });
+              form.on('submit(add)', function(data){
+                push("",'{:url('product/save_product')}',$('#form_data').serialize());
+              });
+            });
+        </script>
+        <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+        <script type="text/javascript" src="/ueditor/ueditor.all.min.js"> </script>
+        <script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+        <script>
+            $(function () {
+                var ue = UE.getEditor('editor');
+            });
+        </script>
+    </body>
+
+</html>

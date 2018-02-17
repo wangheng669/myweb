@@ -12,10 +12,10 @@
         </ul>
         <div class="news-only">
             <div class="news-banner clearfix">
-                <div class="fl news_img"><a href="news/list?id={$news.id}"><img src="/uploads/{$news.image}" alt="{$news.title}"></a></div>
+                <div class="fl news_img"><a href="/news/list/{$news.id}"><img src="/uploads/{$news.image}" alt="{$news.title}"></a></div>
                 <div class="fr news_text">
-                    <div class="news_tittle"><span>·</span><a target="_black" href="news/list?id={$news.id}">{$news.title}</a></div>
-                    <p><a href="news/list?id={$news.id}">{$news.description}</a></p>
+                    <div class="news_tittle"><span>·</span><a target="_black" href="/news/list/{$news.id}">{$news.title}</a></div>
+                    <p><a href="/news/list/{$news.id}">{$news.description}</a></p>
                     <div class="news-time news-dw"><span>{$news.form}</span><span>{$news.create_time}</span></div>
                 </div>
             </div>
@@ -28,8 +28,8 @@
                     <span>{$v.create_time|strtotime|date="Y-m",###}</span>
                 </div>
                 <div class="fl news-list-text">
-                    <h3><span>·</span><a target="_black" href="news/list?id={$v.id}">{$v.title}</a></h3>
-                    <p><a target="_black" href="news/list?id={$v.id}">{$v.description}</a></p>
+                    <h3><span>·</span><a target="_black" href="/index/news/list/{$v.id}">{$v.title}</a></h3>
+                    <p><a target="_black" href="/index/news/list/{$v.id}">{$v.description}</a></p>
                 </div>
                 </section>
             {/foreach}

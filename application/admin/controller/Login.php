@@ -4,7 +4,6 @@ namespace app\admin\controller;
 
 use app\admin\common\Base;
 use think\Request;
-use app\admin\model\Admin;
 use think\Session;
 class Login extends Base
 {
@@ -24,7 +23,7 @@ class Login extends Base
         $userName=$data['username'];
         $map=['username'=>$userName];
         $password=$data['password'];
-        $admin=Admin::get($map);
+        $admin=model('Admin')->get($map);
         if(is_null($admin)){
             $message='用户不存在';
         }else if($admin->password!=md5($password.$admin->email)){

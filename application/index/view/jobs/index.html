@@ -1,0 +1,78 @@
+﻿{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+    <div class="company-profile">
+        <div>
+            <img src="__STATIC__/picture/recruit_banner.jpg" alt="">
+        </div>
+        <div class="news-twonav">
+            <ul class="clearfix">
+                 {volist name=":two_column(22)" id='vo'}
+                <li>
+                    <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+                </li>
+                {/volist}
+            </ul>
+            <div>
+                <div>
+                    <img {if condition="$type EQ 1 " } src="__STATIC__/picture/recruit_banner2.jpg" {else/} src="__STATIC__/picture/recruit_sechool_banner.jpg" {/if} alt="">
+                </div>
+                <div class="recruit-text">
+                     {if condition="$type EQ 1"}
+                     <div>社会招聘</div>
+                </div>
+                 {else/}
+                <div class="recruit-sechooltext">
+                    <div>校园招聘</div>
+                </div>
+                 {/if}
+            </div>
+            {if condition="$jobs_list EQ null"}
+            <div class="please-box">
+                <div class="please"></div>
+                <span>敬请期待</span>
+            </div>
+             {else/}
+            <div class="recruit-box clearfix">
+                <div>
+                    <div class="recruit0">
+                        {volist name='jobs_list' id='vo'}
+                        <article class="recruit-list">
+                            <div class="list_box clearfix">
+                                <div class="fl">
+                                    <h3>{$vo.office}</h3>
+                                    <ul class="clearfix">
+                                        <!--  <li><span>1</span>人</li> -->
+                                        <li>{$vo.branch}</li>
+                                        <li>{$vo.address}</li>
+                                    </ul>
+                                </div>
+                                <div class="fr list_time">
+                                    <span>{$vo.update_time}</span>
+                                    <b class="looking">查看</b>
+                                </div>
+                            </div>
+                            <div class="recruit_work">
+                                <ul>
+                                    <h3>岗位描述</h3>
+                                     {$vo.description}
+                                </ul>
+                                <ul>
+                                    <h3>任职资格</h3>
+                                     {$vo.content}
+                                </ul>
+                                <ul>
+                                    <h3>联系人</h3>
+                                    <p style="margin: 0px; padding: 0px;">姓名：{$vo.name}</p>
+                                    <p style="margin: 0px; padding: 0px;">邮箱：{$vo.email}</p>
+                                </ul>
+                            </div>
+                        </article>
+                        {/volist}
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+    </div>
+
+{include file='public/footer' /}

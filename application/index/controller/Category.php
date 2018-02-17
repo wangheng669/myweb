@@ -15,10 +15,13 @@ class Category extends Base
         $system=model('System')->get(1);
         //获取顶级栏目
         $one_column=model('Column')->where(['parent_id'=>0])->order(['sort'=>'desc'])->select();
+        //获取产品
+        $product=model('Product')->where(['category_id'=>$id])->select();
         return $this->fetch('index',[
             'category'=>$category,
             'system'=>$system,
             'one_column'=>$one_column,
+            'product'=>$product,
         ]);
     }
 }

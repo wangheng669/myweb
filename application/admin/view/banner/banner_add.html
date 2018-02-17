@@ -18,7 +18,16 @@
                     <img id="LAY_demo_upload" width="300" src="/static/admin/images/Booth.jpg">
                     <input id="image_src" type="text" name="image" value="" hidden>
                 </div>
-                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">类别</label>
+                    <div class="layui-input-inline">
+                        <select name="type">
+                            <option value="0">首页大图</option>
+                            <option value="1">产品大图</option>
+                            <option value="2">产品小图</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="layui-form-item">
                     <label for="link" class="layui-form-label">
                         <span class="x-red">*</span>链接
@@ -26,18 +35,6 @@
                     <div class="layui-input-inline">
                         <input type="text" id="link" name="link" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label for="desc" class="layui-form-label">
-                        <span class="x-red">*</span>描述
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="description" name="description" required="" lay-verify="required"
-                        autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        <span class="x-red">*</span>
                     </div>
                 </div>
                 <div class="layui-form-item">

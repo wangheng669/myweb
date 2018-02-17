@@ -1,0 +1,88 @@
+{include file='public/header' /}
+    <body>
+        <div class="x-body">
+            <form class="layui-form layui-form-pane" id="form_data" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label for="L_title" class="layui-form-label">
+                        内容
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" id="L_title" name="title" required lay-verify="title" value="" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">日期</label>
+                    <div class="layui-input-inline">
+                        <input class="layui-input" placeholder="日期" id="LAY_demorange_s">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button type="button" class="layui-btn" lay-filter="add" lay-submit>
+                        保存 
+                    </button>
+                </div>
+            </form>
+        </div>
+        {include file='public/base_js' /}
+        <script>
+            layui.use(['form','laydate','layer','upload'], function(){
+                $ = layui.jquery;
+              var form = layui.form()
+              ,layer = layui.layer;
+              laydate = layui.laydate;//日期插件
+              //监听提交
+                //图片上传接口
+                layui.upload({
+                    url: '{:url('banner/upload')}'
+                    , ext: 'jpg|png|gif'
+                    , success: function (msg) { //上传成功后的回调
+                        if (msg.src != '') {
+                            $('#LAY_demo_upload').attr('src', "__ROOT__/uploads/" + msg.src);
+                            $('#image_src').val(msg.src);
+                        } else {
+                            layer.msg(msg.message, {
+                                icon: 2,
+                                time: 1000
+                            });
+                        }
+                    }
+                });
+            var start = {
+                min: laydate.now()
+                , min: '1900-01-01 00:00:00'
+                , max: '2099-06-16 23:59:59',
+                format: 'YYYY-MM'
+                , istoday: false
+                , choose: function (datas) {
+                }
+            };
+            document.getElementById('LAY_demorange_s').onclick = function () {
+                start.elem = this;
+                laydate(start);
+            }
+            form.on('submit(add)', function(data){
+                //获取日期数据
+                var time=$('#LAY_demorange_s').val();
+                //获取内容数据
+                var content = $('#L_title').val();
+                //对时间进行分割
+                var arr=time.split("-");
+                var year=arr[0];
+                var month = arr[1];
+                var json='{"year":"'+year+'","month":"'+month+'","content":"'+content+'"}';
+                json=$.parseJSON(json);
+                push("",'{:url('about/save_about')}', json);
+            });
+            });
+        </script>
+        <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+        <script type="text/javascript" src="/ueditor/ueditor.all.min.js"> </script>
+        <script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+        <script>
+            $(function () {
+                var ue = UE.getEditor('editor');
+            });
+        </script>
+    </body>
+
+</html>

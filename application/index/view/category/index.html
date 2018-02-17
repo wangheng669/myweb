@@ -4,9 +4,16 @@
     <div class="first-bg"><img src="__STATIC__/picture/product_banner.jpg" alt=""></div>
     <div class="news-twonav product-box">
         <ul class="clearfix">
-            {volist name=":two_column(18)" id='vo'}
-            <li>
+             {volist name=":two_column(18)" id='vo'}
+            <li {if condition="$vo.id EQ 20" } class="tance-box" {elseif condition="$vo.id EQ 21" /} class="ruanjian-box" {/if}>
                 <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+                <section id="down_word{$i}">
+                    <div>
+                        {volist name=":two_column($vo.id)" id='vo'}
+                        <a href="{$vo.column_link}">{$vo.column_name}</a>
+                        {/volist}
+                    </div>
+                </section>
             </li>
             {/volist}
         </ul>
@@ -15,21 +22,24 @@
                 {$category.content}    
             </div>
                 
+            
                 <div class="product-photo">
                 <div class="product-list-prot">产品</div>
                 <div class="product-list-protBox clearfix">
-                    <dl>
-                        <dt><img src="__STATIC__/picture/product_bg.png" alt=""></dt>
-                        <dd>NVDRF软件</dd>
+                     {volist name="product" id="vo"}
+                     <dl>
+                        <dt><img src="/uploads/{$vo.image}" alt=""></dt>
+                        <dd>{$vo.name}</dd>
                         <div>
                             <h4><span>产品</span></h4>
-                            <p><a href="http://www.nanovision.com.cn/production/3">nvDRF动态软件是数字胃肠机和C型臂设备的系统软件。可用于常规数字胃肠机、小C和中C。协同本公司硬件同步盒的应用，软件兼容传统的CCD探测器、动态平板探测器和常用的高压发生器。软件在常规动态软件功能的基础上，更具有最先进的iHDR、iHDR-RT、DSA、CBCT、动检递归降噪等图像处理功能。采用GPU加速运算，iHDR-RT可以达到30fps实时动态图像增强。另外，软件还采用了最新的软件开发技术，可以实现修改软件界面而无需重新编译软件，更快速地进行软件定制化。</a></p>
-                            <a href="http://www.nanovision.com.cn/production/3">查看详情</a>
-                        </div>
+                            <p><a href="product?id={$vo.id}">{$vo.content}</a></p>
+                            <a href="product?id={$vo.id}">查看详情</a>
+                        </div>   
                     </dl>
+                     {/volist}
                     </div>
             </div>
-                    </div>
+            </div>
     </div>
 </div>
 {include file='public/footer' /}

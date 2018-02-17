@@ -4,7 +4,7 @@ namespace app\admin\controller;
 
 use app\admin\common\Base;
 use think\Request;
-use app\admin\model\Column as ModelColumn;
+use app\common\model\Column as ModelColumn;
 class Column extends Base
 {
     private $obj;

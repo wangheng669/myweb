@@ -11,7 +11,7 @@ class Index extends Base
         //获取顶级栏目
         $one_column=model('Column')->where(['parent_id'=>0])->order(['sort'=>'desc'])->select();
         //获取图片
-        $banner=model('Banner')->all();
+        $banner=model('Banner')->where(['type'=>0])->select();
         //获取网站信息
         $system=model('System')->get(1);
         //获取新闻信息

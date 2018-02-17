@@ -1,0 +1,52 @@
+﻿{include file='public/header'/}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/history.css" />
+<script src="__STATIC__/js/develop.js"></script>
+<div class="company-profile">
+    <div>
+        <img src="__STATIC__/picture/banner_company.jpg" alt="">
+    </div>
+    <div class="two-nav">
+        <ul class="clearfix">
+            {volist name=":two_column(1)" id='vo'}
+            <li>
+                <a href="{$vo.column_link}">{$vo.column_name}</a>
+            </li>
+            {/volist}
+        </ul>
+        <div>
+            <div class="item-second-box"><img src="__STATIC__/picture/develop_banner.jpg" alt=""></div>
+            <div class="head-warp">
+                <div class="head">
+                    <div class="nav-box">
+                        <ul>
+                            <li class="cur"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main">
+                <div class="history">
+                    {volist name="about_list" id="vo"}
+                    <div class="history-date">
+                        <ul>
+                            <h2 class="date02"><a href="#nogo">{$vo.year}年</a></h2>
+                            {volist name="about" id="jo"}
+                            {if condition="$vo.year EQ $jo.year "}
+                            <li>
+                                <h3>{$jo.month}月</h3>
+                                <dl>
+                                    <dt>{$jo.content}</dt>
+                                </dl>
+                            </li>
+                            {/if}
+                            {/volist}
+                        </ul>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

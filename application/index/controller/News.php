@@ -37,4 +37,19 @@ class News extends Base
             'one_column'=>$one_column,
         ]);
     }
+        //搜索功能
+    public function search($keywords){
+        $this->webStatus();
+        //获取网站信息
+        $system=model('System')->get(1);
+        //获取顶级栏目
+        $one_column=model('Column')->where(['parent_id'=>0])->order(['sort'=>'desc'])->select();
+        //查到的内容
+        $news_list=model('News')->where('title','like','%'.$keywords.'%')->select();
+        return $this->fetch('search',[
+            'system'=>$system,
+            'one_column'=>$one_column,
+            'news_list'=>$news_list,
+        ]);
+    }
 }

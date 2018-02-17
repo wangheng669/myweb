@@ -9,30 +9,16 @@
 <p>纳米维景是辐射成像应用产品及解决方案的全球提供商，为医疗放射成像、安检和工业无损检测领域提供服务。我们不断突破成像极限，追求更高的速度和精度，以满足客户的需求。</p>
         </div>
         <div class="application-icon clearfix">
+            {foreach $application_list as $v}
             <dl>
                 <div>
-                    <a href="application/list?id=14">
+                    <a href="/application/list/{$v.application_id}">
                         <dt>背景图片</dt>
                     </a>
                 </div>
-                <dd>医疗</dd>
+                <dd>{$v.application_id|column}</dd>
             </dl>
-            <dl>
-                <div>
-                    <a href="application/list?id=15">
-                        <dt>背景图片</dt>
-                    </a>
-                </div>
-                <dd>工业</dd>
-            </dl>
-            <dl>
-                <div>
-                    <a href="application/list?id=16">
-                        <dt>背景图片</dt>
-                    </a>
-                </div>
-                <dd>安检</dd>
-            </dl>
+            {/foreach}
         </div>
     </div>
 </div>

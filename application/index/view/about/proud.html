@@ -1,0 +1,48 @@
+{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+<div class="company-profile">
+    <div>
+        <img src="__STATIC__/picture/banner_company_1.jpg" alt="">
+    </div>
+    <div class="two-nav">
+        <ul class="clearfix">
+             {volist name=":two_column(1)" id='vo'}
+            <li {if condition="$vo.id EQ 20" } class="tance-box" {elseif condition="$vo.id EQ 21" /} class="ruanjian-box" {/if}>
+                <a href="{$vo.column_link}" class="sec">{$vo.column_name}</a>
+                <section id="down_word{$i}">
+                    <div>
+                        {volist name=":two_column($vo.id)" id='vo'}
+                        <a href="{$vo.column_link}">{$vo.column_name}</a>
+                        {/volist}
+                    </div>
+                </section>
+            </li>
+            {/volist}
+        </ul>
+        <div>
+            <div class="item-second-box">
+                <img src="__STATIC__/picture/proud-banner.jpg" alt="">
+            </div>
+            <div class="proud-text">
+                <div>资质荣誉</div>
+                <section class="clearfix" id="images">
+                    {foreach $proud_list as $v}
+                    <dl>
+                        <dt>
+                            <a class="show-big-pic" href="/uploads/{$v.image}">
+                                <img src="/uploads/{$v.image}" alt="">
+                            </a>
+                        </dt>
+                        <dd>{$v.title}</dd>
+                        <dd></dd>
+                    </dl>
+                    {/foreach}
+                    <article class="big-pic">
+                        <img src="" alt="">
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='public/footer' /}

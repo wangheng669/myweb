@@ -10,12 +10,13 @@
             'id'=>'number',
             'image'=>'imageSrc',
             'link'=>'require|url',
-            'description'=>'checkChina|max:150',
+            'type'=>'require|in:0,1,2',
         ];
         protected $message=[
             'id.number'=>'请勿修改',
             'link.url'=>'请填写正确的url地址',
-            'description.max'=>'最大不能超过50字',
+            'type.require'=>'类型不能为空',
+            'type.in'=>'类型错误',
             'links.require'=>'不能为空',
         ];
         protected function checkChina($value)

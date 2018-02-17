@@ -1,0 +1,23 @@
+﻿{include file='public/header' /}
+<link rel="stylesheet" type="text/css" href="__STATIC__/css/static.css" />
+    <div class="company-news">
+    <div class="first-bg"><img src="__STATIC__/picture/search_banner.jpg" alt=""></div>
+    <div class="news-twonav">
+        <div>
+            <div class="search_tittle"><div>搜索</div></div>
+        </div>
+            <div class="news-list clearfix search_list">
+                {volist name='news_list' id='vo'}
+                <section class="clearfix">
+                    <div class="fl news-list-text">
+                        <h3><span>·</span><a href="/index/news/list?id={$vo.id}">{$vo.title}</a></h3>
+                    </div>
+                </section>
+                {/volist}
+            </div>
+    </div>
+    <div class="news-to clearfix">
+        <!-- 分页 -->
+    </div>
+</div>
+{include file='public/footer' /}

@@ -20,6 +20,16 @@
                     <input id="image_src" type="text" name="image" value="{$banner_edit.image}" hidden>
                 </div>
                 <div class="layui-form-item">
+                    <label class="layui-form-label">类别</label>
+                    <div class="layui-input-inline">
+                        <select name="type">
+                            <option value="0" {if condition="$banner_edit.type EQ 0 "} selected="selected" {/if}>首页大图</option>
+                            <option value="1" {if condition="$banner_edit.type EQ 1 "} selected="selected" {/if}>产品大图</option>
+                            <option value="2" {if condition="$banner_edit.type EQ 2 "} selected="selected" {/if}>产品小图</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label for="link" class="layui-form-label">
                         <span class="x-red">*</span>链接
                     </label>
@@ -32,7 +42,7 @@
                     <label for="L_repass" class="layui-form-label">
                     </label>
                     <button type="button"  class="layui-btn" lay-filter="add" lay-submit="">
-                        增加
+                        保存
                     </button>
                 </div>
             </form>

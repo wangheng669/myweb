@@ -27,10 +27,13 @@ class Application extends Base
         $system=model('System')->get(1);
         //获取顶级栏目
         $one_column=model('Column')->where(['parent_id'=>0])->order(['sort'=>'desc'])->select();
+        //获取当前应用下的产品
+        $product_list=model('Product')->where(['application_id'=>$id])->select();
         return $this->fetch('list',[
             'application'=>$application,
             'system'=>$system,
             'one_column'=>$one_column,
+            'product_list'=>$product_list,
         ]);
     }
 }

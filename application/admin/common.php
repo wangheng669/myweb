@@ -10,8 +10,8 @@ function status($status){
             return $str;
     }
 }
-//栏目
-function column($value){
-    $result=model('column')->get($value);
-    return $result['column_name'];
+//产品
+function product($value){
+    $result=model('product')->get($value);
+    return $result['name'];
 }

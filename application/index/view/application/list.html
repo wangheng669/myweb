@@ -8,15 +8,17 @@
                 {$application.content}
             </p>           
                 <div class="product-list-protBox clearfix">
+                    {foreach $product_list as $v}
                     <dl>
-                        <dt><img src="__STATIC__/picture/ct.png" alt="静态CT"></dt>
-                        <dd>静态CT</dd>
+                        <dt><img src="/uploads/{$v.image}" alt="静态CT"></dt>
+                        <dd>{$v.name}</dd>
                         <div>
                             <h4><span>产品</span></h4>
-                            <p><a href="http://www.nanovision.com.cn/production/1">具有突破性技术的第六代CT，采用光子计数探测器和扫描射线源构成双环结构。射线源环圆周布有数百个焦点，扫描时不需机械旋转，而通过时序控制圆周焦点依次放线，快速地完成CT扫描和重建，具有剂量低，扫描速度快，无机械运动伪影的优势。</a></p>
-                            <a href="http://www.nanovision.com.cn/production/1">查看详情</a>
+                            <p><a href="/product/{$v.id}">{$v.content}</a></p>
+                            <a href="/product/{$v.id}">查看详情</a>
                         </div>
                     </dl>
+                    {/foreach}
                 </div>
         </div>
     </div>
