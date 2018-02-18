@@ -4,12 +4,12 @@
             <span class="layui-breadcrumb">
               <a><cite>首页</cite></a>
               <a><cite>会员管理</cite></a>
-              <a><cite>新闻列表</cite></a>
+              <a><cite>产品列表</cite></a>
             </span>
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <xblock><button class="layui-btn" onclick="show('添加新闻','{:url('product/add_product')}','','600')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
+            <xblock><button class="layui-btn" onclick="show('添加产品','{:url('product/addProduct')}','','600')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                     {foreach $product_list as $v}
+                     {foreach $productList as $v}
                     <tr>
                         <td>
                         {$v.id}
@@ -52,11 +52,11 @@
                           {$v.create_time}
                         </td>
                         <td class="td-manage">
-                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('product/edit_product',['id'=>$v.id])}','','600')"
+                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('product/editProduct',['id'=>$v.id])}','','600')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('category/del_category')}','id={$v.id}')"
+                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('product/delProduct')}','id={$v.id}')"
                             style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
@@ -70,26 +70,10 @@
         </div>
         {include file='public/base_js' /}
         <script>
-            layui.use(['laydate','element','laypage','layer'], function(){
+            layui.use(['laydate','element','layer'], function(){
                 $ = layui.jquery;//jquery
-              laydate = layui.laydate;//日期插件
               lement = layui.element();//面包导航
-              laypage = layui.laypage;//分页
               layer = layui.layer;//弹出层
-
-              laypage({
-                    cont: 'page'
-                    , limit: 2
-                    // , curr: $count
-                    // , pages: Math.ceil("$count" / 2)
-                    , jump: function (obj, first) {
-                        curr = obj.curr;
-                        //首次不执行
-                        if (!first) {
-                            window.location.href = window.location.pathname + "?page=" + obj.curr
-                        }
-                    }
-                });
             });
             </script>
     </body>

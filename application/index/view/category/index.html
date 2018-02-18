@@ -27,15 +27,15 @@
                 <div class="product-list-prot">产品</div>
                 <div class="product-list-protBox clearfix">
                      {volist name="product" id="vo"}
-                     <dl>
-                        <dt><img src="/uploads/{$vo.image}" alt=""></dt>
-                        <dd>{$vo.name}</dd>
-                        <div>
-                            <h4><span>产品</span></h4>
-                            <p><a href="product?id={$vo.id}">{$vo.content}</a></p>
-                            <a href="product?id={$vo.id}">查看详情</a>
-                        </div>   
-                    </dl>
+                        <dl>
+                            <dt><img src="/uploads/{$vo.image}" alt=""></dt>
+                            <dd>{$vo.name}</dd>
+                            <div>
+                                <h4><span>产品</span></h4>
+                                <p><a href="/product/{$vo.id}">{$vo.content}</a></p>
+                                <a href="/product/{$vo.id}">查看详情</a>
+                            </div>   
+                        </dl>
                      {/volist}
                     </div>
             </div>

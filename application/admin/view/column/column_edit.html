@@ -8,8 +8,8 @@
                     </label>
                     <div class="layui-input-inline">
                         <input type="text" id="id" name="id" required="" lay-verify="required"
-                        autocomplete="off"  value="{$column_edit.id}" disabled="" class="layui-input">
-                        <input type="text" name="id" value="{$column_edit.id}" hidden>
+                        autocomplete="off"  value="{$columnEdit.id}" disabled="" class="layui-input">
+                        <input type="text" name="id" value="{$columnEdit.id}" hidden>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -18,7 +18,7 @@
                     </label>
                     <div class="layui-input-inline">
                         <input type="text" id="column_name" name="column_name" required="" lay-verify="required"
-                        autocomplete="off" class="layui-input" value="{$column_edit.column_name}">
+                        autocomplete="off" class="layui-input" value="{$columnEdit.column_name}">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -27,7 +27,7 @@
                     </label>
                     <div class="layui-input-inline">
                         <input type="text" id="column_link" name="column_link" required="" lay-verify="required" autocomplete="off" class="layui-input"
-                            value="{$column_edit.column_link}">
+                            value="{$columnEdit.column_link}">
                     </div>
                     </div
                 <div class="layui-form-item">
@@ -36,7 +36,7 @@
                         <select name="parent_id">
                             <option value="0">顶级分类</option>
                              {foreach $columns as $v}
-                            <option value="{$v.id}" {if condition="$v.id eq $column_edit.parent_id"} selected="selected" {/if}>{$v.column_name}</option>
+                            <option value="{$v.id}" {if condition="$v.id eq $columnEdit.parent_id"} selected="selected" {/if}>{$v.column_name}</option>
                             {/foreach}
                         </select>
                     </div>
@@ -46,7 +46,7 @@
                         <span class="x-red">*</span>排序
                     </label>
                     <div class="layui-input-inline">
-                        <input type="number" id="sort" name="sort" required="" lay-verify="required|number" autocomplete="off" value="{$column_edit.sort}"
+                        <input type="number" id="sort" name="sort" required="" lay-verify="required|number" autocomplete="off" value="{$columnEdit.sort}"
                             class="layui-input">
                     </div>
                 </div>

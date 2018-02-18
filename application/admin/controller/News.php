@@ -9,73 +9,83 @@ class News extends Base
 {
     public function index()
     {
-        $news_list=model('news')->all();
-        $count=model('news')->count();
-        return $this->fetch('news_list',[
-            'news_list'=>$news_list,
-            'count'=>$count,
+        $newsList = model('news')->all();
+        $count     = model('news')->count();
+        return $this->fetch('news_list', [
+            'newsList' => $newsList,
+            'count'     => $count,
         ]);
     }
-    public function edit_news()
+
+    public function editNews()
     {
-        $news=$this->edit('news');
+        $news = $this->edit('news');
         //获取二级栏目
-        $column=model('column')->where('parent_id','EQ',1)->select();
-        return $this->fetch('news_edit',[
-            'news'=>$news,
-            'column'=>$column,
-            ]);
-    }
-    public function add_news()
-    {
-        //获取二级栏目
-        $column=model('column')->where('parent_id','EQ',1)->select();
-        return $this->fetch('news_add',[
-            'column'=>$column,
+        $column = model('column')->where('parent_id', 'EQ', 1)->select();
+        return $this->fetch('news_edit', [
+            'news'   => $news,
+            'column' => $column,
         ]);
     }
-    public function save_news(){
-        return $this->operate('News',$where=false);
+
+    public function addNews()
+    {
+        //获取二级栏目
+        $column = model('column')->where('parent_id', 'EQ', 1)->select();
+        return $this->fetch('news_add', [
+            'column' => $column,
+        ]);
     }
-    public function news_edit(){
-        return $this->operate('News',$where=true);
+
+    public function saveNews()
+    {
+        return $this->operate('News', $where = false);
     }
-    public function del_news(){
+
+    public function newsEdit()
+    {
+        return $this->operate('News', $where = true);
+    }
+
+    public function delNews()
+    {
         return $this->delete('News');
     }
-    public function sreach_news(){
+
+    public function sreachNews()
+    {
         //判断搜索是否填写完善
-        $status = 0;
-        $message = '请填写完整';
-        $post_data=request()->post();
-        if(empty($post_data['startTime'])||empty($post_data['username'])){
+        $status    = 0;
+        $message   = '请填写完整';
+        $post_data = request()->post();
+        if (empty($post_data['startTime']) || empty($post_data['username'])) {
             $data = [
-                'status' => $status,
+                'status'  => $status,
                 'message' => $message,
             ];
-            return $data; 
+            return $data;
         }
         //将时间转换为时间戳格式
         $startTime = strtotime($post_data['startTime']);
-        $news_list=model('News')->where('create_time','EGT',$startTime)->where('title','LIKE',"%".$post_data['username']."%")->select();
-        foreach($news_list as $k=>$v){
-            $result[]='<tr><td>
+        $news_list = model('News')->where('create_time', 'EGT', $startTime)->where('title', 'LIKE', "%" . $post_data['username'] . "%")->select();
+        foreach ($news_list as $k => $v) {
+            $result[] = '<tr><td>
                 <input type="checkbox" value="1" name="">
                 </td>
-                <td>'.
-                    $v['id'].'
+                <td>' .
+                $v['id'] . '
                 </td>
                 <td>
-                    <a href="/index/news/list?id="'.$v['id'].'">'.$v['title'].'</a>
+                    <a href="/index/news/list?id="' . $v['id'] . '">' . $v['title'] . '</a>
                 </td>
-                <td >'.
-                    $v['column_id']
-                .'</td>
+                <td >' .
+                $v['column_id']
+                . '</td>
                 <td >
-                    '.$v['form'].'
+                    ' . $v['form'] . '
                 </td>
                 <td >
-                        '.$v['create_time'].'
+                        ' . $v['create_time'] . '
                 </td>
                 <td class="td-manage">
                     <a title="编辑" href="javascript:;" onclick="show("编辑","","","600")"
@@ -89,6 +99,5 @@ class News extends Base
             </td></tr>';
         }
         return $result;
-        
     }
 }

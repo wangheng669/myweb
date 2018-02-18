@@ -39,7 +39,6 @@
                 $ = layui.jquery;
               var form = layui.form()
               ,layer = layui.layer
-
               layui.upload({
                     url: '{:url('banner/upload')}'
                     , ext: 'jpg|png|gif'
@@ -55,9 +54,8 @@
                         }
                     }
                 });
-
               form.on('submit(add)', function(data){
-                push("","{:url('property/property_edit')}",$('#form_data').serialize())
+                push("","{:url('property/propertyEdit')}",$('#form_data').serialize())
               });
             });
         </script>

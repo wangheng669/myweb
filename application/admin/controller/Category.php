@@ -8,37 +8,45 @@ class Category extends Base
 {
     public function index()
     {
-        $category_list=model('category')->all();
-        $count=model('category')->count();
-        return $this->fetch('category_list',[
-            'category_list'=>$category_list,
-            'count'=>$count,
+        $categoryList = model('category')->all();
+        $count         = model('category')->count();
+        return $this->fetch('category_list', [
+            'categoryList' => $categoryList,
+            'count'         => $count,
         ]);
     }
-    public function edit_category()
+
+    public function editCategory()
     {
-        $category=$this->edit('category');
-        $columns=model('column')->where(['parent_id'=>18])->select();
-        return $this->fetch('category_edit',[
-            'category'=>$category,
-            'columns'=>$columns,
-            ]);
+        $category = $this->edit('category');
+        $columns  = model('column')->where(['parent_id' => 18])->select();
+        return $this->fetch('category_edit', [
+            'category' => $category,
+            'columns'  => $columns,
+        ]);
     }
-    public function add_category()
+
+    public function addCategory()
     {
         //获取栏目信息
-        $columns=model('column')->where(['parent_id'=>18])->select();
-        return $this->fetch('category_add',[
-            'columns'=>$columns,
+        $columns = model('column')->where(['parent_id' => 18])->select();
+        return $this->fetch('category_add', [
+            'columns' => $columns,
         ]);
     }
-    public function save_category(){
-        return $this->operate('Category',$where=false);
+
+    public function saveCategory()
+    {
+        return $this->operate('Category', $where = false);
     }
-    public function category_edit(){
-        return $this->operate('Category',$where=true);
+
+    public function categoryEdit()
+    {
+        return $this->operate('Category', $where = true);
     }
-    public function del_category(){
+
+    public function delCategory()
+    {
         return $this->delete('Category');
     }
 }

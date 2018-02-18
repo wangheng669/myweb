@@ -11,11 +11,12 @@
 
 // 应用公共文件
 //取子分类
-//取子类
-    function two_column($sid){
-            $two_column=model('Column')->where(['parent_id'=>$sid])->select();
-            return $two_column;
-    }
+function two_column($sid)
+{
+    $two_column = model('Column')->where(['parent_id' => $sid])->select();
+    return $two_column;
+}
+
 //栏目
 function column($value)
 {

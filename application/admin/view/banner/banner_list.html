@@ -10,7 +10,7 @@
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <xblock><button class="layui-btn" onclick="show('添加用户','{:url('banner/banner_add')}','600','500')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$list_num} 条</span></xblock>
+            <xblock><button class="layui-btn" onclick="show('添加轮播','{:url('banner/bannerAdd')}','600','500')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$listNum} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -28,7 +28,7 @@
                         </th>
                     </tr>
                 </thead>
-                {foreach $banner_list as $v}
+                {foreach $bannerList as $v}
                 <tbody class="x-img">
                     <tr>
                         <td>
@@ -41,11 +41,11 @@
                             {$v.link}
                         </td>
                         <td class="td-manage">
-                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('banner/banner_edit',['id'=>$v.id])}','','510')"
+                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('banner/bannerEdit',['id'=>$v.id])}','','510')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('banner/del_banner')}','id={$v.id}')"
+                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('banner/delBanner')}','id={$v.id}')"
                             style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>

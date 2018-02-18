@@ -9,7 +9,7 @@
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <xblock><button class="layui-btn" onclick="show('添加用户','{:url('admin/add_admin')}','600','500')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$adminlist->total()} 条</span></xblock>
+            <xblock><button class="layui-btn" onclick="show('添加用户','{:url('admin/addAdmin')}','600','500')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$adminList->total()} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -39,7 +39,7 @@
                         </th>
                     </tr>
                 </thead>
-                {foreach $adminlist as $v }
+                {foreach $adminList as $v }
                 <tbody>
                     <tr>
                         <td>
@@ -65,15 +65,15 @@
                         </td>
                         <td class="td-manage">
                              {if condition="$v.status eq 0 "}
-                            <a style="text-decoration:none" onclick="admin_start(this,'{:url('admin/status')}','id={$v.id}')" href="javascript:;" title="启用">
+                            <a style="text-decoration:none" onclick="push(this,'{:url('admin/status')}','id={$v.id}')" href="javascript:;" title="启用">
                                 <i class="layui-icon">&#xe62f;</i>
                             </a>
                              {elseif condition="$v.status eq 1" /}
-                            <a style="text-decoration:none" onclick="admin_stop(this,'{:url('admin/status')}','id={$v.id}')" href="javascript:;" title="停用">
+                            <a style="text-decoration:none" onclick="push(this,'{:url('admin/status')}','id={$v.id}')" href="javascript:;" title="停用">
                                 <i class="layui-icon">&#xe601;</i>
                             </a>
                              {/if}
-                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('admin/admin_edit',['id'=>$v.id])}','','510')"
+                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('admin/adminEdit',['id'=>$v.id])}','','510')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
@@ -97,9 +97,9 @@
               //以上模块根据需要引入
               laypage({
                 cont: 'page'
-                ,limit: "{$adminlist-> listRows()}"
-                ,curr : "{$adminlist-> currentPage()}"
-                ,pages: Math.ceil("{$adminlist-> total()}"/"{$adminlist-> listRows()}")
+                ,limit: "{$adminList-> listRows()}"
+                ,curr : "{$adminList-> currentPage()}"
+                ,pages: Math.ceil("{$adminList-> total()}"/"{$adminList-> listRows()}")
                 ,jump: function (obj, first) {
                      curr = obj.curr;
                           //首次不执行
@@ -107,7 +107,8 @@
                         window.location.href=window.location.pathname+"?page="+obj.curr
                     }
                   }
-              }); 
-            </script>
+              });
+            });
+        </script>
     </body>
 </html>

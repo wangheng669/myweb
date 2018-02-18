@@ -10,28 +10,29 @@ class Jobs extends Base
     {
         $this->webStatus();
         //获取网站信息
-        $system=model('System')->get(1);
+        $system = model('System')->get(1);
         //获取顶级栏目
-        $one_column=model('Column')->where(['parent_id'=>0])->order(['sort'=>'desc'])->select();
+        $oneColumn = model('Column')->where(['parent_id' => 0])->order(['sort' => 'desc'])->select();
         //获取招聘信息
-        $jobs_list=model('Jobs')->where(['jobs_type'=>$type])->select();
-        return $this->fetch('index',[
-            'system'=>$system,
-            'one_column'=>$one_column,
-            'jobs_list'=>$jobs_list,
-            'type'=>$type,
+        $jobsList = model('Jobs')->where(['jobs_type' => $type])->select();
+        return $this->fetch('index', [
+            'system'     => $system,
+            'oneColumn' => $oneColumn,
+            'jobsList'  => $jobsList,
+            'type'       => $type,
         ]);
     }
+
     public function idea()
     {
         $this->webStatus();
         //获取网站信息
         $system = model('System')->get(1);
         //获取顶级栏目
-        $one_column = model('Column')->where(['parent_id' => 0])->order(['sort' => 'desc'])->select();
-        return $this->fetch('idea',[
-            'system'=>$system,
-            'one_column'=>$one_column,
+        $oneColumn = model('Column')->where(['parent_id' => 0])->order(['sort' => 'desc'])->select();
+        return $this->fetch('idea', [
+            'system'     => $system,
+            'oneColumn' => $oneColumn,
         ]);
     }
 }

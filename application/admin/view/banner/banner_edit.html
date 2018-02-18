@@ -9,23 +9,23 @@
                     <div class="layui-input-inline">
                       <div class="site-demo-upbar">
                         <input type="file" name="file" class="layui-upload-file" id="test">
-                        <input type="text" name="id" value="{$banner_edit.id}" hidden>
+                        <input type="text" name="id" value="{$bannerEdit.id}" hidden>
                       </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label  class="layui-form-label">缩略图
                     </label>
-                    <img id="LAY_demo_upload" width="300" src="__ROOT__/uploads/{$banner_edit.image}">
-                    <input id="image_src" type="text" name="image" value="{$banner_edit.image}" hidden>
+                    <img id="LAY_demo_upload" width="300" src="__ROOT__/uploads/{$bannerEdit.image}">
+                    <input id="image_src" type="text" name="image" value="{$bannerEdit.image}" hidden>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">类别</label>
                     <div class="layui-input-inline">
                         <select name="type">
-                            <option value="0" {if condition="$banner_edit.type EQ 0 "} selected="selected" {/if}>首页大图</option>
-                            <option value="1" {if condition="$banner_edit.type EQ 1 "} selected="selected" {/if}>产品大图</option>
-                            <option value="2" {if condition="$banner_edit.type EQ 2 "} selected="selected" {/if}>产品小图</option>
+                            <option value="0" {if condition="$bannerEdit.type EQ 0 "} selected="selected" {/if}>首页大图</option>
+                            <option value="1" {if condition="$bannerEdit.type EQ 1 "} selected="selected" {/if}>产品大图</option>
+                            <option value="2" {if condition="$bannerEdit.type EQ 2 "} selected="selected" {/if}>产品小图</option>
                         </select>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                         <span class="x-red">*</span>链接
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="link" name="link" required="" lay-verify="required" value="{$banner_edit.link}" 
+                        <input type="text" id="link" name="link" required="" lay-verify="required" value="{$bannerEdit.link}"
                         autocomplete="off" class="layui-input">
                     </div>
                 </div>
@@ -73,7 +73,7 @@
             });
               //监听提交
               form.on('submit(add)', function(){
-                push("",'{:url('banner/edit_banner')}',$('#form_data').serialize());
+                push("",'{:url('banner/editBanner')}',$('#form_data').serialize());
               });
             });
         </script>

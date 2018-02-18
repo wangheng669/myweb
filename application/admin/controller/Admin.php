@@ -19,36 +19,36 @@ class Admin extends Base
     public function index()
     {
         $this->doLogin();
-        $result = $this->obj->getAdminAll();
+        $adminList = $this->obj->getAdminAll();
         return $this->fetch('admin_list', [
-            'adminlist' => $result,
+            'adminList' => $adminList,
         ]);
     }
 
     //返回添加页面
-    public function add_admin()
+    public function addAdmin()
     {
         return $this->fetch('admin_add');
     }
 
     //添加操作
-    public function save_admin()
+    public function saveAdmin()
     {
         return $this->obj->operate(false);
     }
 
     //编辑操作
-    public function edit_admin()
+    public function editAdmin()
     {
         return $this->obj->operate(true);
     }
 
     //返回修改页面
-    public function admin_edit()
+    public function adminEdit()
     {
-        $result = $this->edit('admin');
+        $adminEdit = $this->edit('admin');
         return $this->fetch('admin_edit', [
-            'admin_edit' => $result,
+            'adminEdit' => $adminEdit,
         ]);
     }
 
@@ -59,10 +59,10 @@ class Admin extends Base
     }
 
     //状态操作
-    public function status(Request $request)
+    public function status()
     {
         $status    = 0;
-        $post_data = $request->post();
+        $post_data = request()->post();
         if (!empty($post_data)) {
             $id = intval($post_data['id']);
             if ($id == 0) {

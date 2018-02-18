@@ -25,7 +25,7 @@
                   </div>
                 </div> 
             </form>
-            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><button class="layui-btn" onclick="show('添加新闻','{:url('news/add_news')}','','600')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
+            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量删除</button><button class="layui-btn" onclick="show('添加新闻','{:url('news/addNews')}','','600')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@
                 </thead>
                 
                 <tbody>
-                     {foreach $news_list as $v}
+                     {foreach $newsList as $v}
                     <tr>
                         <td>
                             <input type="checkbox" value="1" name="">
@@ -75,11 +75,11 @@
                              {$v.create_time}
                         </td>
                         <td class="td-manage">
-                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('news/edit_news',['id'=>$v.id])}','','600')"
+                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('news/editNews',['id'=>$v.id])}','','600')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('news/del_news')}','id={$v.id}')" 
+                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('news/delNews')}','id={$v.id}')"
                             style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
@@ -104,7 +104,7 @@
                   var username=$('#username').val();
                   var sreach_json='{"startTime":"'+ startTime+'","username":"'+username+'"}';
                   sreach_json=$.parseJSON(sreach_json);
-                sreach("", '{:url('news/sreach_news')}',sreach_json);
+                sreach("", '{:url('news/sreachNews')}',sreach_json);
                 });
             var start = {
                 min: laydate.now()
@@ -116,7 +116,6 @@
                     end.start = datas //将结束日的初始值设定为开始日
                 }
             };
-
             document.getElementById('LAY_demorange_s').onclick = function () {
                 start.elem = this;
                 laydate(start);

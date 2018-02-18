@@ -8,37 +8,45 @@ class Property extends Base
 {
     public function index()
     {
-        $property_list=model('property')->all();
-        $count=model('property')->count();
-        return $this->fetch('property_list',[
-            'property_list'=>$property_list,
-            'count'=>$count,
+        $propertyList = model('property')->all();
+        $count         = model('property')->count();
+        return $this->fetch('property_list', [
+            'propertyList' => $propertyList,
+            'count'         => $count,
         ]);
     }
-    public function edit_property()
+
+    public function editProperty()
     {
-        $property=$this->edit('property');
-        $product=model('product')->all();
-        return $this->fetch('property_edit',[
-            'property'=>$property,
-            'product'=>$product,
+        $property = $this->edit('property');
+        $product  = model('product')->all();
+        return $this->fetch('property_edit', [
+            'property' => $property,
+            'product'  => $product,
         ]);
     }
-    public function add_property()
+
+    public function addProperty()
     {
         //获取栏目信息
-        $product=model('product')->all();
-        return $this->fetch('property_add',[
-            'product'=>$product,
+        $product = model('product')->all();
+        return $this->fetch('property_add', [
+            'product' => $product,
         ]);
     }
-    public function save_property(){
-        return $this->operate('Property',$where=false);
+
+    public function saveProperty()
+    {
+        return $this->operate('Property', $where = false);
     }
-    public function property_edit(){
-        return $this->operate('Property',$where=true);
+
+    public function propertyEdit()
+    {
+        return $this->operate('Property', $where = true);
     }
-    public function del_property(){
+
+    public function delProperty()
+    {
         return $this->delete('Property');
     }
 }

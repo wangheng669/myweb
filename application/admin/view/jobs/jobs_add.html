@@ -70,7 +70,7 @@
               var form = layui.form()
               ,layer = layui.layer
               form.on('submit(add)', function(data){
-                push("",'{:url('jobs/save_jobs')}',$('#form_data').serialize());
+                push("",'{:url('jobs/saveJobs')}',$('#form_data').serialize());
               });
             });
         </script>

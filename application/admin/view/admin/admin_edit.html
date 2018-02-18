@@ -7,8 +7,8 @@
                         <span class="x-red">*</span>登录名
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" name='id' value="{$admin_edit.id}" hidden>
-                        <input type="text" id="username" name="username" required="" lay-verify="username" value="{$admin_edit.username}" 
+                        <input type="text" name='id' value="{$adminEdit.id}" hidden>
+                        <input type="text" id="username" name="username" required="" lay-verify="username" value="{$adminEdit.username}"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
@@ -20,7 +20,7 @@
                         <span class="x-red">*</span>邮箱
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="L_email" name="email" required="" lay-verify="email" value="{$admin_edit.email}" 
+                        <input type="text" id="L_email" name="email" required="" lay-verify="email" value="{$adminEdit.email}"
                         autocomplete="off" class="layui-input">
                     </div>
                     <div class="layui-form-mid layui-word-aux">
@@ -34,8 +34,8 @@
                     <div class="layui-input-inline">
                       <select name="role">
                         <option value="">请选择角色</option>
-                        <option value="1" {if condition="$admin_edit.role eq '超级管理员'"} selected="selected" {/if}>超级管理员</option>
-                        <option value="0" {if condition="$admin_edit.role eq '编辑人员'"} selected="selected" {/if}>编辑人员</option>
+                        <option value="1" {if condition="$adminEdit.role eq '超级管理员'"} selected="selected" {/if}>超级管理员</option>
+                        <option value="0" {if condition="$adminEdit.role eq '编辑人员'"} selected="selected" {/if}>编辑人员</option>
                       </select>
                     </div>
                 </div>
@@ -76,7 +76,6 @@
                 $ = layui.jquery;
               var form = layui.form()
               ,layer = layui.layer;
-            
               //自定义验证规则
                 form.verify({
                     username: function (value, item) { //value：表单的值、item：表单的DOM对象
@@ -92,13 +91,10 @@
                         }
                     }
                 });
-
               //监听提交
                 form.on('submit(save)', function () {
-                    push("","{:url('admin/edit_admin')}", $('#form_data').serialize());
+                    push("","{:url('admin/editAdmin')}", $('#form_data').serialize());
                 });
-              
-              
             });
         </script>
     </body>

@@ -26,7 +26,7 @@
                 </div>
                  {/if}
             </div>
-            {if condition="$jobs_list EQ null"}
+            {if condition="$jobsList EQ null"}
             <div class="please-box">
                 <div class="please"></div>
                 <span>敬请期待</span>
@@ -35,7 +35,7 @@
             <div class="recruit-box clearfix">
                 <div>
                     <div class="recruit0">
-                        {volist name='jobs_list' id='vo'}
+                        {volist name='jobsList' id='vo'}
                         <article class="recruit-list">
                             <div class="list_box clearfix">
                                 <div class="fl">

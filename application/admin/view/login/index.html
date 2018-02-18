@@ -71,7 +71,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-block login-button">
+                    <button type="button" class="btn btn-block login-button">
                         <span class="signin">登录</span>
                     </button>
 
@@ -86,8 +86,7 @@
     </div> <!-- .row -->
 </div> <!-- .container-fluid -->
 <script>
-    $('.login-button').on('click',function(event){
-        event.preventDefault();
+    $('.login-button').on('click',function(){
         $.ajax({
             type: 'POST',
             url: "{:url('login/check')}",

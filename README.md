@@ -478,7 +478,7 @@ php `dirname $0`/composer.phar $*
 
 最后的问题
 
-    首页产品轮播图
+    首页产品轮播图 这个需要JS生成没有解决
 
     大图小图
     id,image,type,create_time,update_time

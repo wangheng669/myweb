@@ -20,7 +20,7 @@
     </div>
     <div class="x-body">
         <xblock>
-            <button class="layui-btn" onclick="show('添加荣誉证书','{:url('about/add_proud')}','','600')">
+            <button class="layui-btn" onclick="show('添加荣誉证书','{:url('about/addProud')}','','600')">
                 <i class="layui-icon">&#xe608;</i>添加</button>
             <span class="x-right" style="line-height:40px">共有数据：{$count} 条</span>
         </xblock>
@@ -46,7 +46,7 @@
             </thead>
 
             <tbody>
-                {foreach $proud_list as $v}
+                {foreach $proudList as $v}
                 <tr>
                     <td>
                         {$v.id}
@@ -61,10 +61,10 @@
                         {$v.create_time}
                     </td>
                     <td class="td-manage">
-                        <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('about/edit_proud',['id'=>$v.id])}','','600')" class="ml-5" style="text-decoration:none">
+                        <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('about/editProud',['id'=>$v.id])}','','600')" class="ml-5" style="text-decoration:none">
                             <i class="layui-icon">&#xe642;</i>
                         </a>
-                        <a title="删除" href="javascript:;" onclick="del(this,'{:url('about/del_proud')}','id={$v.id}')" style="text-decoration:none">
+                        <a title="删除" href="javascript:;" onclick="del(this,'{:url('about/delProud')}','id={$v.id}')" style="text-decoration:none">
                             <i class="layui-icon">&#xe640;</i>
                         </a>
                     </td>
@@ -89,7 +89,7 @@
                 var username = $('#username').val();
                 var sreach_json = '{"startTime":"' + startTime + '","username":"' + username + '"}';
                 sreach_json = $.parseJSON(sreach_json);
-                sreach("", '{:url('about / sreach_about')}', sreach_json);
+                sreach("", '{:url('about / sreachAbout')}', sreach_json);
             });
         });
     </script>

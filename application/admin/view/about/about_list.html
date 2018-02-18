@@ -9,7 +9,7 @@
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
         <div class="x-body">
-            <xblock><button class="layui-btn" onclick="show('添加发展历程','{:url('about/add_about')}','','250')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
+            <xblock><button class="layui-btn" onclick="show('添加发展历程','{:url('about/addAbout')}','','250')"><i class="layui-icon">&#xe608;</i>添加</button><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -35,7 +35,7 @@
                 </thead>
                 
                 <tbody>
-                     {foreach $about_list as $v}
+                     {foreach $aboutList as $v}
                     <tr>
                         <td>
                             {$v.id}
@@ -53,11 +53,11 @@
                              {$v.create_time}
                         </td>
                         <td class="td-manage">
-                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('about/edit_about',['id'=>$v.id])}','','250')"
+                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('about/editAbout',['id'=>$v.id])}','','250')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
-                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('about/del_about')}','id={$v.id}')" 
+                            <a title="删除" href="javascript:;" onclick="del(this,'{:url('about/delAbout')}','id={$v.id}')"
                             style="text-decoration:none">
                                 <i class="layui-icon">&#xe640;</i>
                             </a>
@@ -83,7 +83,7 @@
                   var username=$('#username').val();
                   var sreach_json='{"startTime":"'+ startTime+'","username":"'+username+'"}';
                   sreach_json=$.parseJSON(sreach_json);
-                sreach("", '{:url('about/sreach_about')}',sreach_json);
+                sreach("", '{:url('about/sreachAbout')}',sreach_json);
                 });
             });
             </script>

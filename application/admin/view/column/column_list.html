@@ -4,7 +4,7 @@
             <span class="layui-breadcrumb">
               <a><cite>首页</cite></a>
               <a><cite>会员管理</cite></a>
-              <a><cite>分类管理</cite></a>
+              <a><cite>栏目管理</cite></a>
             </span>
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
@@ -33,7 +33,7 @@
                   </div>
                 </div> 
             </form>
-            <span class="x-right" style="line-height:40px">共有数据：{$column_list->total()} 条</span>
+            <span class="x-right" style="line-height:40px">共有数据：{$columnList->total()} 条</span>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -54,7 +54,7 @@
                         </th>
                     </tr>
                 </thead>
-                {foreach $column_list as $v}
+                {foreach $columnList as $v}
                 <tbody id="x-link">
                     <tr>
                         <td>
@@ -70,7 +70,7 @@
                             {$v.column_name}
                         </td>
                         <td class="td-manage">
-                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('column/column_edit',['id'=>$v.id])}','','510')"
+                            <a title="编辑" href="javascript:;" onclick="show('编辑','{:url('column/columnEdit',['id'=>$v.id])}','','510')"
                             class="ml-5" style="text-decoration:none">
                                 <i class="layui-icon">&#xe642;</i>
                             </a>
@@ -96,9 +96,9 @@
             
               laypage({
                     cont: 'page'
-                    , limit: "{$column_list-> listRows()}"
-                    , curr: "{$column_list-> currentPage()}"
-                    , pages: Math.ceil("{$column_list-> total()}" / "{$column_list-> listRows()}")
+                    , limit: "{$columnList-> listRows()}"
+                    , curr: "{$columnList-> currentPage()}"
+                    , pages: Math.ceil("{$columnList-> total()}" / "{$columnList-> listRows()}")
                     , jump: function (obj, first) {
                         curr = obj.curr;
                         //首次不执行
